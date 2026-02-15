@@ -1,0 +1,23 @@
+const handleAddLecture = async (e) => {
+    e.preventDefault();
+    if (!course) return;
+    setError('');
+=======
+  // Add Lecture to contents
+  const handleAddLecture = async (e) => {
+    e.preventDefault();
+    if (!course) return;
+    setError('');
+
+    // Frontend validation
+    if (!lectureForm.title.trim() || !lectureForm.videoUrl.trim() || !lectureForm.duration.trim()) {
+      setError('Please fill in all required lecture fields.');
+      return;
+    }
+    // Validate resources
+    for (const res of lectureForm.resources) {
+      if (!res.name.trim() || !res.url.trim()) {
+        setError('All resource links must have a name and URL.');
+        return;
+      }
+    }
